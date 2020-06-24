@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".DetailActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/topBar_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorTopBar"
+        app:titleTextColor="#fff" />
+
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:layout_marginStart="10dp"
+        android:src="@drawable/ic_back"
+        android:contentDescription="@string/todo" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/title_detail"
+        android:textAlignment="center"
+        android:layout_marginTop="13dp"
+        android:textSize="18sp"
+        android:textColor="#fff"/>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/topBar_detail">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <!-- CARD AVATAR -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardAvatar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:clickable="true"
+                android:onClick="cardShake"
+                app:cardCornerRadius="170dp"
+                app:cardElevation="15dp"
+                android:focusable="true">
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="20dp"
+                    android:layout_gravity="center">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/avatarValue"
+                        android:layout_width="270dp"
+                        android:layout_height="270dp"
+                        android:src="@drawable/user1"/>
+
+                    <TextView
+                        android:id="@+id/nameValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/str_name"
+                        android:textSize="18sp"
+                        android:textColor="#000"
+                        android:textStyle="bold"
+                        android:layout_marginStart="15dp"
+                        android:layout_marginTop="20dp"
+                        android:layout_centerInParent="true"
+                        android:layout_below="@+id/avatarValue"/>
+
+                    <TextView
+                        android:id="@+id/usernameValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/value_username"
+                        android:textSize="16sp"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_below="@+id/nameValue"/>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- CARD COUNTING VALUE -->
+            <RelativeLayout
+                android:id="@+id/rl_Counting"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_below="@+id/cardAvatar">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardReposit"
+                    android:layout_width="105dp"
+                    android:layout_height="105dp"
+                    app:cardElevation="3dp"
+                    android:layout_margin="5dp"
+                    app:cardCornerRadius="10dp">
+
+                    <LinearLayout
+                        android:id="@+id/countRepository"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:layout_below="@+id/detailPrivacy">
+                        <TextView
+                            android:id="@+id/title_repositoryDetail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/str_repository"
+                            android:textSize="16sp"
+                            android:textStyle="italic"
+                            android:textColor="#000"
+                            />
+                        <TextView
+                            android:id="@+id/repositoryValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:text="@string/value_repostitory"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardFollower"
+                    android:layout_width="105dp"
+                    android:layout_height="105dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="3dp"
+                    android:layout_margin="5dp"
+                    android:layout_toEndOf="@+id/cardReposit">
+                    <LinearLayout
+                        android:id="@+id/countFollower"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:layout_below="@+id/detailPrivacy"
+                        android:layout_toEndOf="@+id/countRepository">
+                        <TextView
+                            android:id="@+id/title_followerDetail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/str_follower"
+                            android:textSize="16sp"
+                            android:textStyle="italic"
+                            android:textColor="#000"
+                            />
+                        <TextView
+                            android:id="@+id/followerValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:text="@string/value_followers"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cardFollowing"
+                    android:layout_width="105dp"
+                    android:layout_height="105dp"
+                    app:cardCornerRadius="10dp"
+                    app:cardElevation="3dp"
+                    android:layout_margin="5dp"
+                    android:layout_toEndOf="@+id/cardFollower">
+                    <LinearLayout
+                        android:id="@+id/countFollowing"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_gravity="center"
+                        android:layout_below="@+id/detailPrivacy"
+                        android:layout_toEndOf="@+id/countFollower">
+
+                        <TextView
+                            android:id="@+id/title_followingDetail"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/str_following"
+                            android:textSize="16sp"
+                            android:textStyle="italic"
+                            android:textColor="#000"
+                            />
+
+                        <TextView
+                            android:id="@+id/followingValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:text="@string/value_following"
+                            android:textSize="20sp"
+                            android:textStyle="bold"
+                            android:textColor="#000"
+                            />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+
+            <!-- CARD PRIVACY -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardPrivacy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="10dp"
+                app:cardElevation="5dp"
+                android:layout_margin="10dp"
+                android:layout_below="@+id/rl_Counting">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/imgCompany"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/ic_company"
+                        android:contentDescription="@string/todo" />
+                    <ImageView
+                        android:id="@+id/imgLocation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:src="@drawable/ic_location"
+                        android:layout_below="@+id/imgCompany"
+                        android:contentDescription="@string/todo" />
+
+                    <TextView
+                        android:id="@+id/companyValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/value_company"
+                        android:textSize="14sp"
+                        android:layout_marginTop="9dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_toEndOf="@+id/imgCompany"/>
+
+                    <TextView
+                        android:id="@+id/locationValue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/value_location"
+                        android:textSize="14sp"
+                        android:layout_marginTop="9dp"
+                        android:layout_marginStart="15dp"
+                        android:layout_toEndOf="@+id/imgLocation"
+                        android:layout_below="@+id/companyValue"/>
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:layout_alignParentEnd="true"
+                android:text="@string/author"
+                android:textColor="#000"
+                android:layout_marginEnd="20dp"
+                android:layout_below="@+id/cardPrivacy"/>
+        </RelativeLayout>
+
+    </ScrollView>
+
+
+</RelativeLayout>
